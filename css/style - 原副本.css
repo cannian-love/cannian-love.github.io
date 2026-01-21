@@ -196,19 +196,6 @@ html {
 body {
   font-size: var(--font-base-size);
   line-height: var(--font-base-lh);
-  background-image: url("https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEQF2Bpb4dpSk2X86-EkKvNRAMuYFbrpgACsBoAAoxVgFcFFDvyf_BLWjgE.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.root-container {
-  background-color: rgba(0,0,0,0.7);
-  min-height: 100vh;
-}
-.body-container {
-  position: relative;
-  padding: var(--layout-padding) 0;
 }
 *,
 *:before,
@@ -316,6 +303,13 @@ dfn {
   background-color: var(--theme-bg-primary);
   background-image: linear-gradient(145deg, var(--theme-text-active1), var(--theme-text-active2));
   box-shadow: inset var(--soft-shadow) var(--soft-shadow) calc(var(--soft-shadow) * 2) var(--theme-bg-shadow), inset calc(-1 * var(--soft-shadow)) calc(-1 * var(--soft-shadow)) calc(var(--soft-shadow) * 2) var(--theme-bg-high);
+}
+.root-container {
+  background-color: var(--theme-bg-primary);
+}
+.body-container {
+  position: relative;
+  padding: var(--layout-padding) 0;
 }
 .back-to-top-fixed {
   position: fixed;

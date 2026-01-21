@@ -24,7 +24,7 @@
 
   
 
-  <title>Hello World | 残念</title>
+  <title>残念</title>
 
   
 
@@ -97,11 +97,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Hello World</h1>
+          <h1 class="title-wrap"></h1>
           <h2 class="title-sub-wrap">
             <strong>残念</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2026-01-20T01:55:40.453Z" itemprop="datePublished">2026-01-20</time>
+            <time  class="article-date" datetime="2026-01-21T12:56:50.156Z" itemprop="datePublished">2026-01-21</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -130,19 +130,47 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h3 id="第三步：使用新链接下载"><a href="#第三步：使用新链接下载" class="headerlink" title="第三步：使用新链接下载"></a>第三步：使用新链接下载</h3><p>将修改后的链接粘贴到浏览器地址栏或下载工具（如IDM、迅雷）中，开始下载。</p>
+<p><strong>速度对比实测</strong>：</p>
+<ul>
+<li>原链接速度：20-50KB&#x2F;s（下载完成约需1小时）</li>
+<li>修改后速度：1.5-2MB&#x2F;s（下载完成仅需5-8分钟）</li>
+</ul>
+<h2 id="🧠-原理解析：为什么这样修改就能提速？"><a href="#🧠-原理解析：为什么这样修改就能提速？" class="headerlink" title="🧠 原理解析：为什么这样修改就能提速？"></a>🧠 原理解析：为什么这样修改就能提速？</h2><p>修改链接的核心逻辑是：<strong>绕开拥堵的CDN节点，直连源服务器</strong>。</p>
+<p>用生活场景比喻：</p>
+<ul>
+<li><strong>原链接</strong>：像去小区便利店买水，但便利店排着长队（CDN节点拥堵）</li>
+<li><strong>修改后</strong>：直接去水厂提货（连接源服务器），虽然距离可能稍远，但无需排队</li>
+</ul>
+<p>从技术角度看：</p>
+<ul>
+<li>原链接请求首先路由到Fastly的CDN节点，若节点过载则会限速；</li>
+<li>修改后的链接直接请求OBS的源服务器，避免了中间节点的瓶颈。</li>
+</ul>
+<h2 id="⚠️-重要注意事项"><a href="#⚠️-重要注意事项" class="headerlink" title="⚠️ 重要注意事项"></a>⚠️ 重要注意事项</h2><ol>
+<li><strong>精确修改</strong>：只删除<code>cdn-fastly.</code>（包括末尾的点），不要误删其他部分；</li>
+<li><strong>保留原链接</strong>：如果修改后链接无法访问（源服务器可能临时维护），可切换回原链接；</li>
+<li><strong>搭配下载工具</strong>：配合IDM、迅雷等多线程下载器，速度还能进一步提升；</li>
+<li><strong>安全第一</strong>：始终从OBS官网获取原始链接，避免使用第三方提供的修改版本。</li>
+</ol>
+<h2 id="💡-进阶提速方案"><a href="#💡-进阶提速方案" class="headerlink" title="💡 进阶提速方案"></a>💡 进阶提速方案</h2><p>如果上述方法效果仍不理想，可以尝试以下组合方案：</p>
+<ol>
+<li><strong>修改链接+IDM多线程下载</strong>：双重加速效果显著；</li>
+<li><strong>切换下载时段</strong>：避开高峰时段（如晚上8-10点）；</li>
+<li><strong>临时更换DNS</strong>：尝试使用Google DNS（8.8.8.8）或Cloudflare DNS（1.1.1.1）。</li>
+</ol>
+<h2 id="📝-快速参考指南"><a href="#📝-快速参考指南" class="headerlink" title="📝 快速参考指南"></a>📝 快速参考指南</h2><h3 id="核心操作总结"><a href="#核心操作总结" class="headerlink" title="核心操作总结"></a>核心操作总结</h3><ol>
+<li>复制官方链接；</li>
+<li>删除“cdn-fastly.”；</li>
+<li>使用新链接下载。</li>
+</ol>
+<h3 id="链接对比示例"><a href="#链接对比示例" class="headerlink" title="链接对比示例"></a>链接对比示例</h3><ul>
+<li>原始慢速链接：<code>https://cdn-fastly.obsproject.com/downloads/OBS-Studio-32.0.4-Windows-x64-Installer.exe</code></li>
+<li>修改后快速链接：<code>https://obsproject.com/downloads/OBS-Studio-32.0.4-Windows-x64-Installer.exe</code></li>
+</ul>
+<h2 id="🎯-最后提醒"><a href="#🎯-最后提醒" class="headerlink" title="🎯 最后提醒"></a>🎯 最后提醒</h2><p>OBS下载缓慢通常并非你的网络问题，而是CDN节点成为了瓶颈。记住这个简单技巧，下次下载时先修改链接，节省宝贵时间！</p>
+<p>如果你觉得这个方法有帮助，请分享给更多受困于OBS下载慢的朋友。如果你有其他OBS使用技巧或问题，欢迎在评论区交流讨论！</p>
+<p><strong>小技巧，大改变，祝你录制直播一切顺利！</strong> 🎬</p>
 
       </section>
 
@@ -155,8 +183,8 @@
     
     <div class="card-text">
       
-        <a href="/2026/01/21/OBS-%E4%B8%8B%E8%BD%BD%E6%85%A2%E5%88%B0%E5%B4%A9%E6%BA%83%EF%BC%9F%E5%88%A0%E6%8E%89-2-%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%AB%8B%E9%A9%AC%E6%8F%90%E9%80%9F%EF%BC%81%F0%9F%92%A8/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">(no title)</h2>
+        <a href="/2026/01/22/%E6%88%91%E7%9A%84%E5%AE%9D%E8%97%8F%E8%B5%84%E6%BA%90%E7%AB%99%E5%A4%A7%E5%85%AC%E5%BC%80%EF%BC%81%F0%9F%91%89/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">我的宝藏资源站大公开！👉</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -164,6 +192,20 @@
   </article>
 </div>
           
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2026/01/20/hello-world/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Hello World</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
           
         </nav>
       
