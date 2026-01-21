@@ -24,7 +24,7 @@
 
   
 
-  <title>归档 | 残念</title>
+  <title>搜索 | 残念</title>
 
   
 
@@ -107,7 +107,7 @@
   
     <div class="header-content">
       <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">归档</h1>
+        <h1 class="title-wrap">搜索</h1>
         
       </div>
     </div>
@@ -124,7 +124,54 @@
     <div class="article-info">
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <!-- 手动添加搜索框代码（适配FlexBlock风格） -->
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+  <input type="text" id="search-input" placeholder="输入关键词搜索博文..." 
+         style="width: 100%; padding: 0.8rem 1rem; border: 1px solid #eee; border-radius: 4px; outline: none; font-size: 1rem;">
+  <div id="search-results" style="margin-top: 1rem; line-height: 1.8;"></div>
+</div>
+
+<!-- 引入搜索脚本 -->
+<script>
+  // 加载搜索索引
+  fetch('/search.json')
+    .then(res => res.json())
+    .then(data => {
+      const input = document.getElementById('search-input');
+      const results = document.getElementById('search-results');
+      
+      input.addEventListener('input', () => {
+        const keyword = input.value.trim().toLowerCase();
+        results.innerHTML = '';
         
+        if (!keyword) return;
+        
+        // 匹配标题/内容
+        const matched = data.filter(item => 
+          item.title.toLowerCase().includes(keyword) || 
+          item.content.toLowerCase().includes(keyword)
+        );
+        
+        if (matched.length === 0) {
+          results.innerHTML = '<p>未找到相关内容</p>';
+          return;
+        }
+        
+        // 渲染结果
+        matched.forEach(item => {
+          const link = document.createElement('a');
+          link.href = item.url;
+          link.style.display = 'block';
+          link.style.padding = '0.5rem 0';
+          link.style.color = '#333';
+          link.style.textDecoration = 'none';
+          link.innerHTML = `<h4 style="margin: 0;">${item.title}</h4>
+                            <p style="margin: 0.2rem 0; color: #666; font-size: 0.9rem;">${item.date}</p>`;
+          results.appendChild(link);
+        });
+      });
+    });
+</script>
       </section>
 
       
